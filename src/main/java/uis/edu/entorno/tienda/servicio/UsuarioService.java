@@ -35,23 +35,3 @@ public class UsuarioService implements IUsuarioService{
         return 1;
     }
 }
-
-/* @Service
-public class UsuarioService {
-    @Autowired
-    UsuarioRepositorio usuarioRepositorio;
-
-    public ArrayList<Usuario>getUsuarios(){
-        return(ArrayList<Usuario>) usuarioRepositorio.findAll();
-    }
-
-    @Autowired
-    public Usuario saveUsuario(Usuario usuario){
-        return usuarioRepositorio.saveAndFlush(usuario);
-    }
-   
-    @Autowired
-    public Optional<Usuario> getById(Long id){
-        return usuarioRepositorio.findAll(id);
-    }
-} */

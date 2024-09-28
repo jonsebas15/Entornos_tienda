@@ -1,6 +1,5 @@
 package uis.edu.entorno.tienda.controlador;
-
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,38 +16,34 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 
-
-
-
-
 @RestController
 @CrossOrigin(origins = "http://localhost:4200/")
 public class UsuarioController {
     @GetMapping("/")
     public String home() {
-        return "Welcome to the home page!";
+        return "Pagina principal de prueba, backend!";
     }
     
     @Autowired
-    UsuarioService usuarioService; /* prodria ir en privado? */
+    UsuarioService usuarioService;
 
-    @GetMapping("/list")
-    public ArrayList<Usuario> cargarUsuarios() {
+    @GetMapping("/usuarios")
+    public List<Usuario> cargarUsuarios() {
         return this.usuarioService.getUsuarios();
     }
 
     //buscar por id
-    @GetMapping("/list/{id}")
+    @GetMapping("/usuarios/{id}")
     public Usuario buscarPorId(@PathVariable Long id){
         return usuarioService.buscarUsuario(id);
     }
     //Agregar un usuario
-    @PostMapping("/")
+    @PostMapping("/usuarios")
     public ResponseEntity<Usuario> agregar(@RequestBody Usuario usuario){
         Usuario obj= usuarioService.nuevoUsuario(usuario);
         return new ResponseEntity<>(obj, HttpStatus.OK);
     }
-    @PutMapping("/") //no deberia de tener un id para saber a quien modificar?
+    @PutMapping("/usuarios") //no deberia de tener un id para saber a quien modificar?
     public ResponseEntity<Usuario> editar(@RequestBody Usuario usuario){
         Usuario obj = usuarioService.buscarUsuario(usuario.getId());
         if(obj != null){
@@ -67,7 +62,7 @@ public class UsuarioController {
     }
     
     //ELiminar
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/usuarios/{id}")
     public ResponseEntity<Usuario> eliminar(@PathVariable Long id){
         Usuario obj= usuarioService.buscarUsuario(id);
         if(obj != null){

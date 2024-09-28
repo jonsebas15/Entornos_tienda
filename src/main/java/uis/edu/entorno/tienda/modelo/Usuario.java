@@ -24,12 +24,16 @@ public class Usuario {
 
     @Column(name = "numeroDocumento")
     private String numeroDocumento;
+
     @Column(name="nombre")
     private String nombre;
+
     @Column(name="password")
     private String password;
+
     @Column(name = "nombreUsuario")
     private String nombreUsuario;
+
     @Column(name="email")
     private String email;
 
